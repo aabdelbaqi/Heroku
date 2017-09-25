@@ -27,9 +27,9 @@ Parse.Cloud.define("iosPush", function(request, response) {
   
   
   //new
-  var emails =["andrew.morcos@gmail.com", "ahmed.abdelbaqi@gmail.com"];
+  //var emails =["andrew.morcos@gmail.com", "ahmed.abdelbaqi@gmail.com"];
    var userQuery = new Parse.Query(Parse.User);
-//userQuery.equalTo("email", 'andrew.morcos@gmail.com');
+userQuery.equalTo("email", 'andrew.morcos@gmail.com');
   //userQuery.equalTo("email", emails);
 console.log("Emails array");
   
