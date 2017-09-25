@@ -6,15 +6,7 @@ Parse.Cloud.define("iosPush", function(request, response) {
   var output='';
   var user = request.user;
   
-  for (property in user) {
-    output += property + ': ' + user[property]+'; ';
-  }
-  console.log('user output'+output);
-  output='';
-  for (property in request) {
-    output += property + ': ' + request[property]+'; ';
-  }
-  console.log('request output'+output);
+  
   
   var params = request.params;
   var device_tokens = [];
@@ -32,18 +24,13 @@ Parse.Cloud.define("iosPush", function(request, response) {
   //var pushQuery=request.pushQuery;
   //console.log('PushQuery ahead:' +pushQuery);
   var pushQuery = new Parse.Query(Parse.Installation);
-  output='';
- 
-  for (property in pushQuery) {
-    output += property + ': ' + pushQuery[property]+'; ';
-  }
-  console.log('pushquery output'+output);
+  
   
   //new
   var emails =["andrew.morcos@gmail.com", "ahmed.abdelbaqi@gmail.com"];
    var userQuery = new Parse.Query(Parse.User);
 //userQuery.equalTo("email", 'andrew.morcos@gmail.com');
-  userQuery.equalTo("email", emails);
+  //userQuery.equalTo("email", emails);
 console.log("Emails array");
   
   //close new/
@@ -57,45 +44,7 @@ console.log("Emails array");
   //pushQuery.equalTo('user', user);
   //pushQuery.equalTo('installationId', user.get("installationId"));
 
-  console.log('----------------------');
-  output='';
-    var pQwhere=pushQuery._where;
-  for (property in pQwhere) {
-    output += property + ': ' + pQwhere[property]+'; ';
-  }
-  console.log('pQwhere output'+output);
-  console.log('----------------------');
-  output='';
-    var pQwhereSK=pQwhere.Somekey;
-  for (property in pQwhereSK) {
-    output += property + ': ' + pQwhereSK[property]+'; ';
-  }
-  console.log('pQwhereSK output'+output);
-  
-    console.log('----------------------');
-  output='';
-    var pQwhereUser=pQwhere.user;
-  for (property in pQwhereUser) {
-    output += property + ': ' + pQwhereUser[property]+'; ';
-  }
-  console.log('pQwhereUser output'+output);
-  
-    console.log('----------------------');
-  output='';
-    var pQwhereID=pQwhere.installationId;
-  for (property in pQwhereID) {
-    output += property + ': ' + pQwhereID[property]+'; ';
-  }
-  console.log('pQwhereID output'+output);
-  
-  console.log('----------------------');
-  output='';
-    var ab=pushQuery._extraOptions;
-  for (property in ab) {
-    output += property + ': ' + ab[property]+'; ';
-  }
-  console.log('ab output'+output);
-  
+ 
   
   Parse.Push.send({
     where: pushQuery, // Set our Installation query
