@@ -3,9 +3,8 @@ console.log('KAMAN Main1 Reached');
 
 // iOS push testing
 Parse.Cloud.define("iosPush", function(request, response) {
-  var output='';
+ 
   var user = request.user;
-  
   
   
   var params = request.params;
@@ -29,16 +28,16 @@ Parse.Cloud.define("iosPush", function(request, response) {
   //new
   //var emails =["andrew.morcos@gmail.com", "ahmed.abdelbaqi@gmail.com"];
    var userQuery = new Parse.Query(Parse.User);
-userQuery.equalTo("email", 'andrew.morcos@gmail.com');
+	userQuery.equalTo("email", 'andrew.morcos@gmail.com');
   //userQuery.equalTo("email", emails);
-console.log("Emails array");
+	console.log("Emails array");
   
   //close new/
   pushQuery.equalTo('deviceType', 'ios'); // targeting iOS devices only
-  pushQuery.equalTo("someKey", someKey);
+  //pushQuery.equalTo("someKey", someKey);
   //new
   pushQuery.exists("user"); // filter out installations without users
-        pushQuery.include('user');
+  pushQuery.include('user');
   //endnew
   pushQuery.matchesQuery("user", userQuery);
   //pushQuery.equalTo('user', user);
