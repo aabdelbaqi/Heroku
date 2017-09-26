@@ -66,8 +66,8 @@ Parse.Cloud.define("iosPush", function(request, response) {
   }
   console.log('pushquery output'+output);
   pushQuery.equalTo('deviceType', 'ios'); // targeting iOS devices only
-  pushQuery.equalTo("someKey", someKey);
-  //pushQuery.equalTo('user', user);
+  //pushQuery.equalTo("someKey", someKey);
+  pushQuery.equalTo("user", user);
   //pushQuery.equalTo('installationId', user.get("installationId"));
 
   console.log('----------------------');
