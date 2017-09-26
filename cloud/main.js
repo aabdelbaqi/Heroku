@@ -1,5 +1,5 @@
 
-// With promises
+/*// With promises
 console.log('KAMAN Main1 Reached');
 
 // iOS push testing
