@@ -20,7 +20,16 @@ var api = new ParseServer({
   serverURL: process.env.SERVER_URL || '',  // Don't forget to change to https if needed
   liveQuery: {
   classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
-  }
+  },
+   push: {
+        ios: 
+        {
+            pfx: '/app/ProdPush.p12', // the path and filename to the .p12 file you exported earlier. 
+            topic: 'com.riadco.kaman', // The bundle identifier associated with your app
+            production: true // Specifies which environment to connect to: Production (if true) or Sandbox
+        }
+    }
+
 })
  
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
