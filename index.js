@@ -6,7 +6,9 @@ var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
 
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
-
+if (!databaseUri) {
+  console.log('DATABASE_URI not specified, falling back to localhost.');
+}
 
 
 var api = new ParseServer({
@@ -18,16 +20,9 @@ var api = new ParseServer({
   serverURL: process.env.SERVER_URL || '',  // Don't forget to change to https if needed
   liveQuery: {
   classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
-  },
-  push: {
-        ios: 
-        {
-            pfx: '/app/ProdPush.p12', // the path and filename to the .p12 file you exported earlier. 
-            topic: 'com.riadco.kaman', // The bundle identifier associated with your app
-            production: true // Specifies which environment to connect to: Production (if true) or Sandbox
-        }
-    }
-});
+  };
+})
+ 
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
 // javascriptKey, restAPIKey, dotNetKey, clientKey
@@ -43,7 +38,7 @@ app.use(mountPath, api);
 
 // Parse Server plays nicely with the rest of your web routes
 app.get('/', function(req, res) {
-  res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
+  res.status(200).send('I dream of being a website.  Please start the parse-server repo on GitHub!');
 });
 
 // There will be a test page available on the /test path of your server url
