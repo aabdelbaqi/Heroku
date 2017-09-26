@@ -28,9 +28,9 @@ var api = new ParseServer({
             topic: 'com.riadco.kaman', // The bundle identifier associated with your app
             production: true // Specifies which environment to connect to: Production (if true) or Sandbox
         }
-    };
+    }
 
-})
+});
  
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
