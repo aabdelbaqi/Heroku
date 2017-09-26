@@ -43,18 +43,18 @@ app.get('/', function(req, res) {
 
 // There will be a test page available on the /test path of your server url
 // Remove this before launching your app
-//app.get('/test', function(req, res) {
- // res.sendFile(path.join(__dirname, '/public/test.html'));
-//});
+app.get('/test', function(req, res) {
+  res.sendFile(path.join(__dirname, '/public/test.html'));
+});
 
-//var port = process.env.PORT || 1337;
-//var httpServer = require('http').createServer(app);
-//httpServer.listen(port, function() {
-  //  console.log('parse-server-example running on port ' + port + '.');
-//    console.log('Andrew'+process.env.MASTER_KEY);
- // console.log('TEST CLOUD'+(process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js'));
-//  console.log('Andrew 2 '+__dirname);
-//});
+var port = process.env.PORT || 1337;
+var httpServer = require('http').createServer(app);
+httpServer.listen(port, function() {
+    console.log('parse-server-example running on port ' + port + '.');
+   console.log('Andrew'+process.env.MASTER_KEY);
+  console.log('TEST CLOUD'+(process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js'));
+ console.log('Andrew 2 '+__dirname);
+});
 
 // This will enable the Live Query real-time server
 ParseServer.createLiveQueryServer(httpServer);
