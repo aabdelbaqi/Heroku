@@ -24,6 +24,9 @@ Parse.Cloud.define("iosPush", function(request, response) {
   var device_tokens = [];
   var someKey = params.someKey;
   var data = params.data;
+  var usersTraget = params.usersTraget;
+  
+  console.log ('YYYY='+usersTraget);
   
   
   console.log('----------------------');
